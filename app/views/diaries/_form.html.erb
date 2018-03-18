@@ -1,0 +1,50 @@
+</html><!DOCTYPE>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="/assets/stylesheets/normalize.css">
+    <link rel="stylesheet" href="/assets/stylesheets/style.css">
+  </head>
+  <body>
+    <div class="container">
+    <header class="header clearfix">
+      <nav>
+        <ul class="top_menu clearfix">
+         <li><a href="/home">HOME</a></li>
+         <li><a href="/diaries">ツイート一覧</a></li>
+         <li><a href="/diaries/new">新規ツイート</a></li>
+        </ul>
+      </nav>
+    </header>
+    <div class="wrapper clearfix">
+      <section class="about">
+      <%= form_with(model: @diary, local: true, url: choose_new_or_edit) do |form| %>
+        <% if @diary.errors.any? %>
+        <div id="error_explanation">
+        <h2><%= @diary.errors.count %>件のエラーがあります。</h2>
+          <ul>
+            <% @diary.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+        <% end %>
+      
+        <div class="new_diary_title">
+          <%= form.label :いまどうしてる？ %>
+          <%= form.text_field :content %>
+        </div>
+        <div class="new_diary">
+          <%= form.submit :ツイート %>
+        </div>
+          
+      <% end %>
+      </section>    
+    </div>
+    <footer class="footer">
+        <p>DIVE INTO CODE test application</p>
+    </footer>
+    </div>
+  </body>
+</html>
+

@@ -1,0 +1,41 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="/assets/stylesheets/normalize.css">
+    <link rel="stylesheet" href="/assets/stylesheets/style.css">
+  </head>
+  <body>
+    <div class="container">
+    <header class="header clearfix">
+      <nav>
+        <ul class="top_menu clearfix">
+         <li><a href="/home">HOME</a></li>
+         <li><a href="/diaries">ツイート一覧</a></li>
+         <li><a href="/diaries/new">新規ツイート</a></li>
+        </ul>
+      </nav>
+    </header>
+      <div class="about">
+        <div class="page_title">
+        <h1>ツイート一覧</h1>
+        </div>
+
+        <p><%= notice %></p>
+        <table>
+          <% @diaries.each do |diary| %>
+            <tr>
+              <td><%= diary.content %></td>
+              <td><%= link_to'ツイートを編集',edit_diary_path(diary.id), data: { confirm: 'このツイートを本当に編集しますか？' }  %></td>
+              <td><%= link_to 'ツイートを削除', diary_path(diary.id), method: :delete , data: { confirm: 'このツイートを本当に削除しますか？' } %></td>
+            </tr>
+        <% end %>
+        </table>
+        </div>
+    <footer class="footer">
+        <p>DIVE INTO CODE test application</p>
+    </footer>
+    </div>
+  </body>
+</html>
+
